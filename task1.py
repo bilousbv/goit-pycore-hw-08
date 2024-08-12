@@ -257,19 +257,24 @@ def load_data(filename="addressbook.pkl"):
         return AddressBook()
 
 
+def get_commands():
+    return ("Available commands:\n"
+            "- help - to show available commands\n"
+            "- hello\n"
+            "- add [name] [phone_number] - to add new record to the address book\n"
+            "- change [name] [old_phone_number] [new_phone_number] - to change phone number\n"
+            "- phone [name] - to show records phone numbers\n"
+            "- add-birthday [name] [birthday] - to add birthday to the address book record\n"
+            "- show-birthday [name] - to show birthday of the address book record\n"
+            "- birthdays - to show upcoming birthdays\n"
+            "- delete [name] - to delete record from the address book\n"
+            "- all - to show all contacts\n"
+            "- exit or close - to exit\n")
+
+
 def main():
     print("Welcome to Assistant Bot!")
-    print("Available commands:")
-    print("- hello")
-    print("- add [name] [phone_number] - to add new record to the address book")
-    print("- change [name] [old_phone_number] [new_phone_number] - to change phone number")
-    print("- phone [name] - to show records phone numbers")
-    print("- add-birthday [name] [birthday] - to add birthday to the address book record")
-    print("- show-birthday [name] - to show birthday of the address book record")
-    print("- birthdays - to show upcoming birthdays")
-    print("- delete [name] - to delete record from the address book")
-    print("- all - to show all contacts")
-    print("- exit (or close to exit)")
+    print(get_commands())
     book = load_data()
 
     while True:
@@ -280,6 +285,8 @@ def main():
             save_data(book);
             print("Good bye!")
             break
+        elif command == "help":
+            print(get_commands())
         elif command == "hello":
             print("How can I help you?")
         elif command == "add":
